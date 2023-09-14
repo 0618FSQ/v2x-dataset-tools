@@ -14,7 +14,7 @@ class MapAPI:
 
     def get_lane_ids_in_bbox(self, point, radius):
         return list(self.get_lane_in_bbox(point, radius).keys())
-    
+
     def get_centerline(self, point, radius):
         return self.get_lane_in_bbox(point, radius).values()
 
@@ -22,7 +22,6 @@ class MapAPI:
         ans = {}
         lanes = self.map['LANE']
         for k, v in lanes.items():
-            
             v['centerline'] = self.str2np(v['centerline'])
             if self.in_radius(v, point, radius):
                 v['left_boundary'] = self.str2np(v['left_boundary'])
